@@ -1,0 +1,4 @@
+<resources>
+
+    <style name="Theme.GedeBook" parent="@style/Theme.Leanback" />
+</resources>
