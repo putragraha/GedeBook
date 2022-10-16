@@ -9,6 +9,7 @@ android {
     defaultConfig {
         applicationId "com.ptn.gedebook"
         minSdk 21
+        //noinspection OldTargetApi
         targetSdk 32
         versionCode 1
         versionName "1.0"
@@ -24,13 +25,26 @@ android {
     buildFeatures {
         viewBinding true
     }
+    testOptions {
+        unitTests.all {
+            useJUnitPlatform()
+        }
+    }
 }
 
 dependencies {
 
+    //noinspection GradleDependency
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.leanback:leanback:1.0.0'
     implementation 'androidx.appcompat:appcompat:1.5.1'
+    //noinspection GradleDependency
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+
+    testImplementation "io.mockk:mockk:1.13.1"
+    //noinspection GradleDependency
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4"
 }
