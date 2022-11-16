@@ -2,8 +2,11 @@ package com.ptn.gedebook.book.data.datasource
 
 import com.ptn.gedebook.book.data.model.BookModel
 import com.ptn.gedebook.book.data.service.BookService
+import javax.inject.Inject
 
-class BookRemoteDataSourceImpl(private val bookService: BookService): BookRemoteDataSource {
+class BookRemoteDataSourceImpl @Inject constructor(
+    private val bookService: BookService
+) : BookRemoteDataSource {
 
     override suspend fun getBooks(): Result<BookModel> {
         return try {

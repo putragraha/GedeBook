@@ -10,11 +10,16 @@ import com.ptn.gedebook.book.presentation.state.BookUiState.Failed
 import com.ptn.gedebook.book.presentation.state.BookUiState.LoadComplete
 import com.ptn.gedebook.book.presentation.state.BookUiState.Loading
 import com.ptn.gedebook.book.presentation.state.BookUiState.Success
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
-class BookViewModel(private val getBooksUseCase: GetBooksUseCase): ViewModel() {
+@HiltViewModel
+class BookViewModel @Inject constructor(
+    private val getBooksUseCase: GetBooksUseCase
+) : ViewModel() {
 
     private val _bookFlow: MutableStateFlow<BookUiState> = MutableStateFlow(Loading)
     val bookFlow: StateFlow<BookUiState>
