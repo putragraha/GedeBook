@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -30,6 +31,10 @@ android {
             useJUnitPlatform()
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
@@ -42,9 +47,21 @@ dependencies {
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-moshi:2.9.0'
+    implementation 'com.squareup.moshi:moshi-kotlin:1.13.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.5.1'
+    implementation 'com.github.bumptech.glide:glide:4.14.2'
+
+    kapt "com.squareup.moshi:moshi-kotlin-codegen:1.13.0"
+    kapt 'com.github.bumptech.glide:compiler:4.14.2'
 
     testImplementation "io.mockk:mockk:1.13.1"
     //noinspection GradleDependency
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
     testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4"
+}
+
+kapt {
+    correctErrorTypes true
 }
